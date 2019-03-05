@@ -1,3 +1,9 @@
+Requirements:
+Python 3.6
+Numpy
+Scipy
+Sklearn
+
 # iwmh
 To perform 1-NN classification for ICWS and PCWS methods,
 1. Run knn_set.py
