@@ -121,64 +121,6 @@ def mapp_fset(train,test):
     return end-start
 
 
-def mapp_fsnv(train, test):
-    # print(dim)
-    # print(len(train[0]))
-
-    trinst = len(train)
-    tinst = len(test)
-
-    start = time.time()
-    maxi = np.zeros(dim, dtype=np.float)
-
-    for i in range(trinst):
-        inte=train[i][1:]
-        for j in range(dim):
-            maxi[j]=max(maxi[j],inte[j])
-
-    for i in range(tinst):
-        j = 1
-        while j < len(test[i][1:]):
-            indx = int(test[i][j])
-            maxi[indx] = max(maxi[indx], test[i][j + 1])
-            j = j + 2
-
-
-    maxx = np.ceil(maxi)
-
-    # print(maxi)
-    for i in range(len(maxi)):
-        if maxx[i] <= 0:
-            maxx[i] = 1
-
-    R = 0
-    rr = np.zeros(len(maxi) + 1, dtype=np.int)
-
-    for i in range(len(maxi)):
-        rr[i] = R
-        R = R + maxx[i]
-
-    rr[i + 1] = R
-    # print(maxx)
-    # print(r)
-    # print(R)
-    cws.R = R
-
-    m = np.zeros(int(R), dtype=np.int)
-    for i in range(len(rr) - 1):
-        for j in range(rr[i], rr[i + 1]):
-            m[j] = i
-    # m[j]=i
-    # print(m)
-    # input()
-    cws.m = m
-    cws.rr = rr
-
-    end = time.time()
-
-    return end - start
-
-
 def genrand(nhash):
     alg=2
     r1 =np.zeros((maxh,dim),dtype=np.float)
@@ -238,18 +180,7 @@ def genrand(nhash):
 def chnh(nh):
     cws.nhash=nh
     
-def gjs_fset(v1, v2):
-    vec1=sweight_vect(v1)
-    vec2=sweight_vect(v2)
-    min_sum=0
-    max_sum=0
-    for i in range(dim):
-        min_sum = min_sum+np.minimum(vec1[i], vec2[i])
-        max_sum = max_sum+np.maximum(vec1[i], vec2[i])     
-    if max_sum==0:
-        return 0
-    else:
-        return float(min_sum) / float(max_sum)
+
 
 def sweight_vect(v):
     hash1=np.zeros(dim, dtype=np.float)
@@ -262,43 +193,7 @@ def sweight_vect(v):
     #print(hash1[366])
     return hash1
 
-def gjs_fvec(v1, v2):
-    start=time.time()
-    min_sum=0
-    max_sum=0
-    for i in range(dim):
-        min_sum = min_sum+np.minimum(v1[i], v2[i])
-        max_sum = max_sum+np.maximum(v1[i], v2[i])
-    end=time.time()
-    timetak.tt=end-start
-    if max_sum==0:
-        simv= 0
-    else:
-        simv= float(min_sum) / float(max_sum)
-    return round(simv,4)
 
-def gjs_fvec_neg(v1, v2):
-    min_sum=0
-    max_sum=0
-    
-    for i in range(len(v1)):
-        if v1[i]<0:
-            a=0
-        else:
-            a=v1[i]
-            
-        if v2[i]<0:
-            b=0
-        else:
-            b=v2[i]
-        min_sum = min_sum+np.minimum(a, b)
-        max_sum = max_sum+np.maximum(a, b)  
-            
-    if max_sum==0:
-        sivm=0
-    else:
-        simv= float(min_sum) / float(max_sum)
-    return round(simv,4)
 
     
 def egjs_list(v1,v2):
