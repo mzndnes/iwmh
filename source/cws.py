@@ -45,47 +45,8 @@ def icws_set(hs,st,hidx):
     timetak.tt=end-start
     #print(timetak.tt)
     
-def icws(hs,v,hidx):
-    start=time.time()
-    for i in range(hidx,nhash):
-        a = np.zeros(dim, dtype=np.float)
-        y = np.zeros(dim, dtype=np.float)
-        
-        for p in range(dim):
-            if v[p]>0:             
-                t= np.floor((np.log(v[p])/ -np.log(r[i][p])) + b[i][p])#u1[p]*u2[p]
-                y[p]= np.exp((t - b[i][p]) * -np.log(r[i][p]))
-                a[p]= -np.log(c[i][p])*r[i][p]/y[p]
-                #print(t)
-            else:
-                a[p]=math.inf
-        k = np.nanargmin(a)
-        hs[i][0]=k
-        hs[i][1]=int(y[k])
-    end=time.time()
-    timetak.tt=end-start
-    
-    
 
-def pcws(hs,v,hidx):
     
-    start=time.time()
-    for i in range(hidx,nhash):
-        a = np.zeros(dim, dtype=np.float)
-        y = np.zeros(dim, dtype=np.float)
-        for p in range(dim):
-            if v[p]>0: 
-                t= np.floor((np.log(v[p])/ -np.log(r[i][p])) + b[i][p])#u1[p]*u2[p]
-                y[p]= np.exp((t - b[i][p]) * -np.log(r[i][p]))
-                a[p]= -np.log(c1[i][p])*r1[i][p]/y[p]
-            else:
-                a[p]=math.inf
-        k = np.nanargmin(a)
-        hs[i][0]=k
-        hs[i][1]=int(y[k])
-    end=time.time()
-    timetak.tt=end-start
-    return hs    
     
 def wmh(hs, v,hidx):
     
