@@ -63,31 +63,9 @@ def rtoset_sweight(rfl): #reads weight as the set
     return data
     csvf.close()
 
-def rtovec_weight(rfl): #reads weight as the vec
-    curpath = os.path.abspath(os.getcwd())
-    newpath=os.path.split(curpath)
-    tarpath=os.path.join(newpath[0],'weight',rfl)
-    csvf=open(tarpath,'r')
-    csvRD=csv.reader(csvf,delimiter=',')
-    data=[]
-    for row in csvRD:
-        intdata=[]
-        
-        for col in row:
-            f=float(col)
-            intdata.append(f)
-            
-        data.append(intdata)
-    return data
-    csvf.close()
 
-def msewfl(errr,trtime,ttime,etime):
-    saveFile=open(wfl_mse,'a')
-    saveFile.write(str(errr)+',')
-    saveFile.write(str(trtime)+',')
-    saveFile.write(str(ttime)+',')
-    saveFile.write(str(etime)+'\n')
-    saveFile.close()
+
+
     
 def knnwfl(errr,trtime,ttime,etime,cltime):
     saveFile=open(wfl_cl,'a')
@@ -125,23 +103,10 @@ def wr_tim(trtime,ttime,etime,tptime):
     saveFile.write(str(tptime)+'\n')
     saveFile.close()
 
-def wr_accsim(rec):
-    saveFile=open(wfl,'a')
-    for i in range(len(rec)):
-        if i==len(rec)-1:
-            saveFile.write(str(rec[i])+'\n')
-        else:
-            saveFile.write(str(rec[i])+',')
-    saveFile.close()
+
         
 
-'''names=['News20','Artif1','Artif3','gisette','Artif5',
-       'Syn','Url','FordA','StarLightCurves','HandOutlines',
-       'webspam','CinCECGtorso','Leukemia']
-dm=[541956,10000,10000,5000,10000,
-    10,66436,500,1024,2709,
-    144488,1639,7129]'''
-    
+
 names=['News20','Rcv','Realsim','gisette','kdda2010',
        'Syn','Url','FordA','StarLightCurves','HandOutlines',
        'Webspam','CinCECGtorso','Leukemia']
