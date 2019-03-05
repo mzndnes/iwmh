@@ -1,11 +1,11 @@
 # iwmh
 To perform 1-NN classification for ICWS and PCWS methods,
 1. Run knn_set.py
-2. to change dataset, change the value of indd variable in knn_set.py according the indices of the datasets in the comment of knn_set.py
+2. to change dataset, change the value of indd variable in knn_set.py according to the indices of the datasets in the comment of knn_set.py
 
 To perform 1-NN classification for IWMH and WMH methods,
 1. Run knn_vec.py
-2. to change dataset, change the value of indd variable in knn_vec.py according the indices of the datasets in the comment of knn_vec.py
+2. to change dataset, change the value of indd variable in knn_vec.py according to the indices of the datasets in the comment of knn_vec.py
 
 Results will be stored in knn.txt.
 
