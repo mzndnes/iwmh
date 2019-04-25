@@ -4,6 +4,9 @@ Numpy
 Scipy
 Sklearn
 
+
+I have submitted paper to ESWA journal and is under review.
+
 # iwmh
 To perform 1-NN classification for ICWS and PCWS methods,
 1. Run knn_set.py
